@@ -4,9 +4,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,29 +17,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="pokemon")
+@Table(name="teams")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pokemon {
+public class Teams {
 
 	@Id
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="team_id")
 	@Column
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne(mappedBy = "pokemon")
-	@Column(name="team_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int teamId;
+	@Column
+	private String name;
 	
-	@Column(name="poke_id")
-	private int pokeId;
+	@OneToOne(mappedBy = "teams")
+	@Column(name="user_id")
+	private int UserId;
 
-	public Pokemon(int teamId, int pokeId) {
+	public Teams(String name, int userId) {
 		super();
-		this.teamId = teamId;
-		this.pokeId = pokeId;
+		this.name = name;
+		UserId = userId;
 	}
+	
 	
 }
