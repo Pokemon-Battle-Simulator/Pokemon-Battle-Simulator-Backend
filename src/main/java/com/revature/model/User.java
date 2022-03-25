@@ -1,7 +1,8 @@
 package com.revature.model;
 
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -24,8 +25,6 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	@Id
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id")
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int id;
@@ -41,13 +40,17 @@ public class User {
 	
 	@Column(name="last_name")
 	public String lastName;
+	
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+	private List<Teams> teams;
 
-	public User(String username, String password, String firstName, String lastName) {
+	public User(String username, String password, String firstName, String lastName, List<Teams> teams) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.teams = teams;
 	}
 	
 	
