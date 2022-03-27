@@ -33,6 +33,9 @@ public class User {
 	public String username;
 	
 	@Column
+	public String email;
+	
+	@Column
 	public String password;
 	
 	@Column(name="first_name")
@@ -41,15 +44,28 @@ public class User {
 	@Column(name="last_name")
 	public String lastName;
 	
+	@Column
+	public String favoritePokemon;
+	
 	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
 	private List<Teams> teams;
-
-	public User(String username, String password, String firstName, String lastName, List<Teams> teams) {
+	
+	//For logging in a user
+	public User(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
+	}
+
+	//For registering a user.
+	public User(String username, String email, String password, String firstName, String lastName, String favoritePokemon, List<Teams> teams) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.favoritePokemon = favoritePokemon;
 		this.teams = teams;
 	}
 	
