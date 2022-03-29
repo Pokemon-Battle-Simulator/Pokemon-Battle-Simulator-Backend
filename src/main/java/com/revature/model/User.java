@@ -58,7 +58,7 @@ public class User {
 	}
 
 	//For registering a user.
-	public User(String username, String email, String password, String firstName, String lastName, String favoritePokemon, List<Teams> teams) {
+	public User(String username, String email, String password, String firstName, String lastName, String favoritePokemon) {
 		super();
 		this.username = username;
 		this.email = email;
@@ -66,7 +66,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.favoritePokemon = favoritePokemon;
-		this.teams = teams;
 	}
 	
 	
