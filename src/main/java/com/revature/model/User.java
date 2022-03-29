@@ -13,10 +13,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Component
 @Entity
 @Table(name="user")
 @Data
@@ -27,6 +33,7 @@ public class User {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id") 
 	public int id;
 	
 	@Column
