@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<Object, Object>{
-	
-	void save(User user);
-	
-	void checkCredentials(String username, String password);
+public interface UserRepository extends JpaRepository<User, Integer>{
+		
+	User checkCredentials(String username, String password);
 
 }

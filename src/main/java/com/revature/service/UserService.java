@@ -14,13 +14,13 @@ public class UserService {
 	
 	//Whenever this method is invoked, we want to begin a new transaction (Unit of work against the DB)
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void registerUser(User user) {
-		userRepo.save(user);
+	public User registerUser(User user) {
+		return userRepo.save(user);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void loginUser(User user) {
-		userRepo.checkCredentials(user.username, user.password);
+	public User loginUser(User user) {
+		return userRepo.checkCredentials(user.username, user.password);
 	}
 
 }
