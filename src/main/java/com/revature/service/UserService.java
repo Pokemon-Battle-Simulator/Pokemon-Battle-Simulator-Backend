@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.dao.UserRepository;
 import com.revature.model.User;
+import com.revature.repository.UserRepository;
 
 public class UserService {
 	
