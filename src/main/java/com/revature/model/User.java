@@ -54,8 +54,8 @@ public class User {
 	@Column
 	public String favoritePokemon;
 	
-//	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
-//	private List<Teams> teams;
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+	private List<Teams> teams;
 	
 	//For logging in a user
 	public User(String username, String password) {

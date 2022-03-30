@@ -14,23 +14,21 @@ import com.revature.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins="*", allowedHeaders="*") 
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
-	//http://loclhost:5000/register
+
+	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*") 
 	@PostMapping("/register")
 	public ResponseEntity<User> registerUser(@Valid @RequestBody User user){
-		
 		return ResponseEntity.ok(userService.registerUser(user));
 	}
 	
 	@PostMapping("/login")
 	public ResponseEntity<User> loginUser(@Valid @RequestBody User user){
 		return ResponseEntity.ok(userService.loginUser(user));
-
 	}
 
 }
