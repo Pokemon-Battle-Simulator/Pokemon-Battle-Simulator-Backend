@@ -35,15 +35,14 @@ public class Pokemon {
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Column(name="team_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int teamId;
+	private Teams team;
 	
 	@Column(name="poke_id")
 	private int pokeId;
 
-	public Pokemon(int teamId, int pokeId) {
+	public Pokemon(Teams team, int pokeId) {
 		super();
-		this.teamId = teamId;
+		this.team = team;
 		this.pokeId = pokeId;
 	}
 	
