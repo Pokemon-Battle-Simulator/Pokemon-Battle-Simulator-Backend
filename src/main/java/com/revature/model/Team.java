@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id") 
-public class Teams {
+public class Team {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -51,7 +51,7 @@ public class Teams {
 	@OneToMany(mappedBy="team", cascade = CascadeType.ALL)
 	private List<Pokemon> pokemon;
 
-	public Teams(String name, User user, List<Pokemon> pokemon) {
+	public Team(String name, User user, List<Pokemon> pokemon) {
 		super();
 		this.name = name;
 		this.user = user;
