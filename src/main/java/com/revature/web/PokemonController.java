@@ -27,7 +27,7 @@ public class PokemonController {
 	
 	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*") 
 	@GetMapping("/{id}")
-	public ResponseEntity<Pokemon> addPokemon(@PathVariable int id) {
+	public ResponseEntity<Pokemon> getPokemon(@PathVariable int id) {
 		return ResponseEntity.ok(pokemonService.getById(id));
 	}
 

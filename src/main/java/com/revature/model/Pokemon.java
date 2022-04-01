@@ -36,12 +36,12 @@ public class Pokemon {
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
-	private Teams team;
+	private Team team;
 	
 	@Column(name="poke_id")
 	private int pokeId;
 
-	public Pokemon(Teams team, int pokeId) {
+	public Pokemon(Team team, int pokeId) {
 		super();
 		this.team = team;
 		this.pokeId = pokeId;

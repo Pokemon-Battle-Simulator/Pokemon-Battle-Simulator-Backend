@@ -23,13 +23,13 @@ public class TeamController {
 	
 	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*") 
 	@PostMapping("/add")
-	public ResponseEntity<Pokemon> addPokemon(Team team) {
+	public ResponseEntity<Team> addTeam(Team team) {
 		return ResponseEntity.ok(teamService.add(team));
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*") 
 	@GetMapping("/{id}")
-	public ResponseEntity<Pokemon> addPokemon(@PathVariable int id) {
+	public ResponseEntity<Team> getTeam(@PathVariable int id) {
 		return ResponseEntity.ok(teamService.getById(id));
 	}
 
