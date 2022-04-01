@@ -26,6 +26,7 @@ public class UserController {
 		return ResponseEntity.ok(userService.registerUser(user));
 	}
 	
+	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
 	@PostMapping("/login")
 	public ResponseEntity<User> loginUser(@Valid @RequestBody User user){
 		return ResponseEntity.ok(userService.loginUser(user));

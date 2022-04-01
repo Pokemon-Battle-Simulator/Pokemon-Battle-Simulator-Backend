@@ -8,7 +8,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class RootController {
-	
+
 	@GetMapping("/docs") 
 	@ResponseStatus(HttpStatus.SEE_OTHER)
 	public RedirectView redirectViewToApiDocumentation() {
