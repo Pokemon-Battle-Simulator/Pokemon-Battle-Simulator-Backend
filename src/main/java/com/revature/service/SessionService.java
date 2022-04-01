@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Pokemon;
 import com.revature.model.Session;
@@ -18,6 +20,16 @@ public class SessionService {
 	public List<Session> findAllSessions() {
 		
 		return sessionRepo.findAll();
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public Session add(Session session) {
+		return sessionRepo.save(session);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED) 
+	public void remove(int id) {
+		sessionRepo.deleteById(id);
 	}
 	
 }
