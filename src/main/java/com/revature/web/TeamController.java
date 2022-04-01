@@ -10,25 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Pokemon;
+import com.revature.model.Team;
 import com.revature.service.PokemonService;
+import com.revature.service.TeamsService;
 
 @RestController
 @RequestMapping("/team")
 public class TeamController {
 	
 	@Autowired
-	private PokemonService pokemonService;
+	private TeamsService teamService;
 	
 	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*") 
 	@PostMapping("/add")
 	public ResponseEntity<Pokemon> addPokemon(Team team) {
-		return ResponseEntity.ok(pokemonService.add(team));
+		return ResponseEntity.ok(teamService.add(team));
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*") 
 	@GetMapping("/{id}")
 	public ResponseEntity<Pokemon> addPokemon(@PathVariable int id) {
-		return ResponseEntity.ok(pokemonService.getById(id));
+		return ResponseEntity.ok(teamService.getById(id));
 	}
 
 }
