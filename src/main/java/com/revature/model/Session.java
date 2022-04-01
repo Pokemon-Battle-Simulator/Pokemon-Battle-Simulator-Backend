@@ -75,14 +75,14 @@ public class Session {
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user1_team")
-	private Teams user1Team = new Teams();
+	private Team user1Team = new Team();
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user2_team")
-	private Teams user2Team = new Teams();
+	private Team user2Team = new Team();
 
 	public Session(boolean active, User user1, User user2, sessionStatus user1Status, sessionStatus user2Status,
-			int user1Move, int user2Move, Pokemon user1Poke, Pokemon user2Poke, Teams user1Team, Teams user2Team) {
+			int user1Move, int user2Move, Pokemon user1Poke, Pokemon user2Poke, Team user1Team, Team user2Team) {
 		super();
 		this.active = active;
 		this.user1 = user1;
@@ -99,7 +99,7 @@ public class Session {
 
 	// used when first creating the new session
 	public Session(boolean active, User user1, sessionStatus user1Status, int user1Move, Pokemon user1Poke,
-			Teams user1Team) {
+			Team user1Team) {
 		super();
 		this.active = active;
 		this.user1 = user1;
