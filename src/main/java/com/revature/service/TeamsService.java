@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Teams;
 import com.revature.repository.TeamsRepository;
@@ -15,20 +16,18 @@ public class TeamsService {
 	@Autowired
 	private TeamsRepository teamsRepo;
 	
-public int addTeam(Teams team) {
-		
-		Teams savedTeam = teamsRepo.save(team);
-		return savedTeam.getId();
-	}
-	
 	public List<Teams> findAllTeams() {
 		
 		return teamsRepo.findAll();
 	}
 	
-	public void deleteTeamById(int id) {
-		
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public Teams add(Teams team) {
+		return teamsRepo.save(team);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED) 
+	public void remove(int id) {
 		teamsRepo.deleteById(id);
 	}
-
 }
