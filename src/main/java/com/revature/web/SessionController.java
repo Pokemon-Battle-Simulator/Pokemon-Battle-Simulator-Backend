@@ -1,5 +1,6 @@
 package com.revature.web;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -49,10 +50,19 @@ public class SessionController {
 	
 	@PostMapping("/update")
 	public ResponseEntity<Session> updateUserInfoSession(@Valid @RequestBody Session session) {
-		return ResponseEntity.ok(sessionService.update(session, session.getId()));
+		return ResponseEntity.ok(sessionService.update(session));
 
 	}
 	
+	@PostMapping("/update/{user_id}")
+	public ResponseEntity<Session> updateUserInfoSessionByUserId(@Valid @RequestBody Session session, @PathVariable int user_id){
+		if (user_id == session.getUser1().id) {
+			return ResponseEntity.ok(sessionService.updateUser1(session, session.getId(), session.getUser1(), session.getUser1Move(),session.getUser1Status()));
+		}else if (user_id == session.getUser2().id) {
+			return ResponseEntity.ok(sessionService.updateUser2(session, session.getId(), session.getUser2(), session.getUser2Move(),session.getUser2Status()));
+		}
+		return null;
+	}
 	
 
 }
