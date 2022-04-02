@@ -37,13 +37,13 @@ public class SessionController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Pokemon> findById(@PathVariable int id) {
+	public ResponseEntity<Session> findById(@PathVariable int id) {
 		return ResponseEntity.ok(sessionService.getById(id));
 	}
 	
 	
 	@GetMapping("/findAll")
-	public ResponseEntity<Set<Pokemon>> getAllSessions() {
+	public ResponseEntity<Set<Session>> getAllSessions() {
 		return ResponseEntity.ok(sessionService.getAll());
 	}
 	
