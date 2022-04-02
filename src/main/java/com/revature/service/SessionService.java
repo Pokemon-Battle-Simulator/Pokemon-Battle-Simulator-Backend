@@ -31,5 +31,9 @@ public class SessionService {
 	public void remove(int id) {
 		sessionRepo.deleteById(id);
 	}
+
+	public Session getById(int id) {
+		return sessionRepo.getById(id);
+	}
 	
 }

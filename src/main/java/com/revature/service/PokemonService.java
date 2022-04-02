@@ -40,4 +40,9 @@ public class PokemonService {
 	public void remove(int id) {
 		pokemonRepo.deleteById(id);
 	}
+
+	@Transactional(readOnly=true)
+	public Pokemon getById(int id) {
+		return pokemonRepo.getById(id);
+	}
 }
