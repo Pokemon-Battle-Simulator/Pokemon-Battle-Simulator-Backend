@@ -30,4 +30,10 @@ public class TeamsService {
 	public void remove(int id) {
 		teamsRepo.deleteById(id);
 	}
+
+	@Transactional(readOnly=true)
+	public Team getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

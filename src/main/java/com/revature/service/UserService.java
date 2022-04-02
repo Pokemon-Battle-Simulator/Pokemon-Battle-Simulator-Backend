@@ -25,4 +25,14 @@ public class UserService {
 		return userRepo.checkCredentials(user.getUsername(), user.getPassword());
 	}
 
+
+	public User getByID(int id) {
+		return userRepo.getById(id);
+	}
+
+
+	public User getByUsername(String username) {
+		return userRepo.getByUsername(username);
+	}
+
 }
