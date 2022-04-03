@@ -40,6 +40,18 @@ public class Pokemon {
 	
 	@Column(name="poke_id")
 	private int pokeId;
+	
+	@Column(name="move1")
+	private String move1;
+	
+	@Column(name="move1")
+	private String move2;
+	
+	@Column(name="move1")
+	private String move3;
+	
+	@Column(name="move1")
+	private String move4;
 
 	public Pokemon(Team team, int pokeId) {
 		super();
