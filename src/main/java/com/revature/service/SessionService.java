@@ -56,12 +56,12 @@ public class SessionService {
 	}
 
 	public Session updateUser1(@Valid Session session, int id, User user1, int user1Move, sessionStatus user1SessionStatus) {
-		return sessionRepo.updateUser1(session, id, user1, user1Move, user1SessionStatus);
+		return sessionRepo.updateUser1(session, user1, id, user1Move, user1SessionStatus);
 	}
 
 	public Session updateUser2(@Valid Session session, int id, User user2, int user2Move, sessionStatus user2SessionStatus) {
 		
-		return sessionRepo.updateUser2(session, id, user2, user2Move, user2SessionStatus);
+		return sessionRepo.updateUser2(session, user2, id, user2Move, user2SessionStatus);
 	}
 	
 }

@@ -16,11 +16,11 @@ import com.revature.model.User;
 public interface SessionRepository extends JpaRepository<Session, Integer>{
 
 	@Modifying
-	@Query("UPDATE session set user1_move = :user1Move, user1_status = :user1SessionStatus WHERE id = :id")
-	Session updateUser1(@Valid Session session, @Param("id") int id, User user1, @Param("user1Move") int user1Move, @Param("user1SessionStatus") sessionStatus user1SessionStatus);
+	@Query("UPDATE Session set user1Move = ?4, user1Status = ?5 WHERE id = ?3")
+	Session updateUser1(@Valid Session session, User user1, @Param("id") int id,  @Param("user1Move") int user1Move, @Param("user1SessionStatus") sessionStatus user1SessionStatus);
 
 	@Modifying
-	@Query("UPDATE session set user2_move = :user2Move, user2_status = :user2SessionStatus WHERE id = :id")
-	Session updateUser2(@Valid Session session, @Param("id") int id, User user2, @Param("user2Move") int user2Move, @Param("user2SessionStatus") sessionStatus user2SessionStatus);
+	@Query("UPDATE Session set user2Move = ?4, user2Status = ?5 WHERE id = ?3")
+	Session updateUser2(@Valid Session session, User user2, @Param("id") int id, @Param("user2Move") int user2Move, @Param("user2SessionStatus") sessionStatus user2SessionStatus);
 
 }
