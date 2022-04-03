@@ -44,19 +44,22 @@ public class Pokemon {
 	@Column(name="move1")
 	private String move1;
 	
-	@Column(name="move1")
+	@Column(name="move2")
 	private String move2;
 	
-	@Column(name="move1")
+	@Column(name="move3")
 	private String move3;
 	
-	@Column(name="move1")
+	@Column(name="move4")
 	private String move4;
 
-	public Pokemon(Team team, int pokeId) {
+	public Pokemon(Team team, int pokeId, String move1, String move2, String move3, String move4) {
 		super();
 		this.team = team;
 		this.pokeId = pokeId;
+		this.move1 = move1;
+		this.move2 = move2;
+		this.move3 = move3;
+		this.move4 = move4;
 	}
-	
 }
