@@ -2,10 +2,10 @@
 FROM openjdk:8-jdk-alpine
 
 # copy the generate JAR into the container to run
-COPY /target/user-portal-api.jar user-portal-api.jar
+COPY /target/Pokemon-Battle-Simulator-Backend-0.0.1-SNAPSHOT.jar Pokemon-Battle-Simulator-Backend-0.0.1-SNAPSHOT.jar
 
 # Expose port 5000 of the container
 EXPOSE 5000
 
 # Run the JAR when we run the container, thus executing the app
-ENTRYPOINT ["java", "-jar", "user-portal-api.jar"]
+ENTRYPOINT ["java", "-jar", "Pokemon-Battle-Simulator-Backend-0.0.1-SNAPSHOT.jar"]
