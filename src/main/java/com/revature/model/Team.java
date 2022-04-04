@@ -41,7 +41,7 @@ public class Team {
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
-	private User user;	
+	private User user;
 	
 	@OneToMany(mappedBy="team", cascade = CascadeType.ALL)
 	private List<Pokemon> pokemon;
@@ -49,7 +49,7 @@ public class Team {
 	public Team(String name, User user, List<Pokemon> pokemon) {
 		super();
 		this.name = name;
-		this.user = user;
+		//this.user = user;
 		this.pokemon = pokemon;
 	}
 	
