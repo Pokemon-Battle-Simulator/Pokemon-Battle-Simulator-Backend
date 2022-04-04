@@ -21,18 +21,16 @@ public class UserService {
 	
 	
 	@Transactional(readOnly=true)
-	public User loginUser(User user) {
-		return userRepo.checkCredentials(user.getUsername(), user.getPassword());
-	}
-
-
-	public User getByID(int id) {
-		return userRepo.getById(id);
-	}
-
-
-	public User getByUsername(String username) {
-		return userRepo.getByUsername(username);
+	public User authenticate(User user) {
+		
+		User userInDb = userRepo.findByUsername(user.getUsername());
+		
+		if(user.getPassword().equals(userInDb.getPassword())) {
+			return userInDb;
+		}
+		
+		return null;
+		
 	}
 
 }
