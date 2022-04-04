@@ -20,20 +20,16 @@ public class PokemonService {
 	@Autowired
 	private PokemonRepository pokemonRepo;
 	
-	public int addPokemon(Pokemon pokemon) {
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public Pokemon addPokemon(Pokemon pokemon) {
 		
 		Pokemon savedPokemon = pokemonRepo.save(pokemon);
-		return savedPokemon.getId();
+		return savedPokemon;
 	}
 	
 	public List<Pokemon> findAllPokemon() {
 		
 		return pokemonRepo.findAll();
-	}
-	
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public Pokemon add(Pokemon pokemon) {
-		return pokemonRepo.save(pokemon);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED) 

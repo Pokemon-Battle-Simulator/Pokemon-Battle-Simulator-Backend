@@ -21,7 +21,7 @@ public class PokemonController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<Pokemon> addPokemon(Pokemon pokemon) {
-		return ResponseEntity.ok(pokemonService.add(pokemon));
+		return ResponseEntity.ok(pokemonService.addPokemon(pokemon));
 	}
 	
 	@GetMapping("/{id}")
