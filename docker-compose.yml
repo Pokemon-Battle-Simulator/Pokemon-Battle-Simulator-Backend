@@ -31,7 +31,7 @@ services:
     - demo
 
   myapi:
-    image: my-api:auto
+    image: api:auto
     mem_limit: 700m
     ports:
       - "5000:5000"
