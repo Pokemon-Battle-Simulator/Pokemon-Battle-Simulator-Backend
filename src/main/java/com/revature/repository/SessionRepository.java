@@ -17,10 +17,10 @@ public interface SessionRepository extends JpaRepository<Session, Integer>{
 
 	@Modifying
 	@Query("UPDATE Session set user1Move = ?4, user1Status = ?5 WHERE id = ?3")
-	Session updateUser1(@Valid Session session, User user1, @Param("id") int id,  @Param("user1Move") int user1Move, @Param("user1SessionStatus") sessionStatus user1SessionStatus);
+	Session updateUser1(@Valid Session session, User user1, @Param("id") int id,  @Param("user1Move") String user1Move, @Param("user1SessionStatus") sessionStatus user1SessionStatus);
 
 	@Modifying
 	@Query("UPDATE Session set user2Move = ?4, user2Status = ?5 WHERE id = ?3")
-	Session updateUser2(@Valid Session session, User user2, @Param("id") int id, @Param("user2Move") int user2Move, @Param("user2SessionStatus") sessionStatus user2SessionStatus);
+	Session updateUser2(@Valid Session session, User user2, @Param("id") int id, @Param("user2Move") String user2Move, @Param("user2SessionStatus") sessionStatus user2SessionStatus);
 
 }

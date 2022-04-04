@@ -1,24 +1,19 @@
 package com.revature.model;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import antlr.collections.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -56,8 +51,8 @@ public class User {
 	@NotBlank
 	private String favoritePokemon;
 	
-//	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
-//	private List<User> teams;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Team team;
 	
 	//For logging in a user
 	public User(String username, String password) {
