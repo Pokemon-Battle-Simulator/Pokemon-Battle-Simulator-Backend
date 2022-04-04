@@ -55,11 +55,11 @@ public class SessionService {
 		return sessionRepo.save(session);
 	}
 
-	public Session updateUser1(@Valid Session session, int id, User user1, int user1Move, sessionStatus user1SessionStatus) {
+	public Session updateUser1(@Valid Session session, int id, User user1, String user1Move, sessionStatus user1SessionStatus) {
 		return sessionRepo.updateUser1(session, user1, id, user1Move, user1SessionStatus);
 	}
 
-	public Session updateUser2(@Valid Session session, int id, User user2, int user2Move, sessionStatus user2SessionStatus) {
+	public Session updateUser2(@Valid Session session, int id, User user2, String user2Move, sessionStatus user2SessionStatus) {
 		
 		return sessionRepo.updateUser2(session, user2, id, user2Move, user2SessionStatus);
 	}

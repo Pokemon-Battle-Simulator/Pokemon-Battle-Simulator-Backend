@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.revature.model.Pokemon;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,7 +46,7 @@ public class Session {
 	private boolean active = true;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="user1_id")
 	private User user1 = new User();
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -61,29 +60,29 @@ public class Session {
 	private sessionStatus user2Status = sessionStatus.EMPTY;
 	
 	@Column(name="user1_move")
-	private int user1Move = 0;
+	private String user1Move;
 	
 	@Column(name="user2_move")
-	private int user2Move = 0;
+	private String user2Move;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user1_poke")
-	private Pokemon user1Poke = new Pokemon();
+	private Pokemon user1Poke;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user2_poke")
-	private Pokemon user2Poke = new Pokemon();
+	private Pokemon user2Poke;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user1_team")
-	private Team user1Team = new Team();
+	private Team user1Team;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="user2_team")
-	private Team user2Team = new Team();
+	private Team user2Team;
 
 	public Session(boolean active, User user1, User user2, sessionStatus user1Status, sessionStatus user2Status,
-			int user1Move, int user2Move, Pokemon user1Poke, Pokemon user2Poke, Team user1Team, Team user2Team) {
+			String user1Move, String user2Move, Pokemon user1Poke, Pokemon user2Poke, Team user1Team, Team user2Team) {
 		super();
 		this.active = active;
 		this.user1 = user1;
@@ -96,17 +95,5 @@ public class Session {
 		this.user2Poke = user2Poke;
 		this.user1Team = user1Team;
 		this.user2Team = user2Team;
-	}
-
-	// used when first creating the new session
-	public Session(boolean active, User user1, sessionStatus user1Status, int user1Move, Pokemon user1Poke,
-			Team user1Team) {
-		super();
-		this.active = active;
-		this.user1 = user1;
-		this.user1Status = user1Status;
-		this.user1Move = user1Move;
-		this.user1Poke = user1Poke;
-		this.user1Team = user1Team;
 	}
 }
