@@ -60,7 +60,7 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getById(@PathVariable int id){
-		return ResponseEntity.ok(userService.getByID(id));
+		return ResponseEntity.ok(userService.getById(id));
 	}
 
 	

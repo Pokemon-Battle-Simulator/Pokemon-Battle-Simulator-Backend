@@ -32,5 +32,15 @@ public class UserService {
 		return null;
 		
 	}
+	
+	@Transactional(readOnly=true)
+	public User getById(int id) {
+		return userRepo.getById(id);
+	}
+	
+	@Transactional(readOnly=true)
+	public User getByUsername(String username) {
+		return userRepo.findByUsername(username);
+	}
 
 }
