@@ -9,4 +9,4 @@ scrape_configs:
     static_configs:
     # define host + port number
     # why myapi instead of localhost? The host name is Docker service name when calling another container
-    - targets: ['app:9090']
+    - targets: ['app:3000']
