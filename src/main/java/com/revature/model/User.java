@@ -3,10 +3,12 @@ package com.revature.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -51,8 +53,11 @@ public class User {
 	@NotBlank
 	private String favoritePokemon;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	private Team team;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	private Session session;
 	
 	//For logging in a user
 	public User(String username, String password) {

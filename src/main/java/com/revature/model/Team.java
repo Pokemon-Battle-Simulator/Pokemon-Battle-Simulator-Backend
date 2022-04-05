@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.criteria.Fetch;
 
 import org.springframework.stereotype.Component;
 
@@ -39,17 +41,20 @@ public class Team {
 	@Column
 	private String name;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="team", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="team", cascade = CascadeType.MERGE)
 	private List<Pokemon> pokemon;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	private Session session;
 
 	public Team(String name, User user, List<Pokemon> pokemon) {
 		super();
 		this.name = name;
-		//this.user = user;
+		this.user = user;
 		this.pokemon = pokemon;
 	}
 	
