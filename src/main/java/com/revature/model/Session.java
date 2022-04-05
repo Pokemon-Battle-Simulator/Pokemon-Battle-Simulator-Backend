@@ -45,13 +45,13 @@ public class Session {
 	@Column
 	private boolean active = true;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="session")
 	@JoinColumn(name="user1_id")
-	private User user1 = new User();
+	private User user1;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="session")
 	@JoinColumn(name="user2_id")
-	private User user2 = new User();
+	private User user2;
 	
 	@Column(name="user1_status")
 	private sessionStatus user1Status = sessionStatus.EMPTY;
@@ -65,24 +65,24 @@ public class Session {
 	@Column(name="user2_move")
 	private String user2Move;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="session")
 	@JoinColumn(name="user1_poke")
 	private Pokemon user1Poke;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="session")
 	@JoinColumn(name="user2_poke")
 	private Pokemon user2Poke;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="session")
 	@JoinColumn(name="user1_team")
 	private Team user1Team;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="session")
 	@JoinColumn(name="user2_team")
 	private Team user2Team;
 
 	public Session(boolean active, User user1, User user2, sessionStatus user1Status, sessionStatus user2Status,
-			String user1Move, String user2Move, Pokemon user1Poke, Pokemon user2Poke, Team user1Team, Team user2Team) {
+			String user1Move, String user2Move, Pokemon user1Poke, Pokemon user2Poke) {
 		super();
 		this.active = active;
 		this.user1 = user1;
@@ -93,7 +93,5 @@ public class Session {
 		this.user2Move = user2Move;
 		this.user1Poke = user1Poke;
 		this.user2Poke = user2Poke;
-		this.user1Team = user1Team;
-		this.user2Team = user2Team;
 	}
 }

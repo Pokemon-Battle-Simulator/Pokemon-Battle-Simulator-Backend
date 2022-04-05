@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -34,7 +35,7 @@ public class Pokemon {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private Team team;
 	
@@ -52,6 +53,9 @@ public class Pokemon {
 	
 	@Column(name="move4")
 	private String move4;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	private Session session;
 
 	public Pokemon(int pokeId, String move1, String move2, String move3, String move4) {
 		super();
